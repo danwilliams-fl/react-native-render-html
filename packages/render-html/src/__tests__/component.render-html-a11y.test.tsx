@@ -86,6 +86,7 @@ describe('RenderHTML a11y', () => {
       const { getByA11yRole, findByTestId } = render(element);
       await findByTestId('image-success');
       const image = getByA11yRole('image');
+      expect(image).toHaveProp('accessible', true);
       expect(image).toHaveProp('accessibilityRole', 'image');
       expect(image).toHaveProp('accessibilityLabel', 'An image');
 
@@ -108,6 +109,7 @@ describe('RenderHTML a11y', () => {
       const { getByTestId, findByTestId } = render(element);
       await findByTestId('image-success');
       const image = getByTestId('img');
+      expect(image).not.toHaveProp('accessible');
       expect(image).toHaveProp('accessibilityRole', 'none');
       expect(image).not.toHaveProp('accessibilityLabel');
 
